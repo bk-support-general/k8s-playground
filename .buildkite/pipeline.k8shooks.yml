@@ -1,0 +1,21 @@
+steps:
+- label: ":k8s:agent env hooks test"    
+  plugins:
+    - kubernetes: 
+        extraVolumeMounts:
+          - mountPath: /buildkite/hooks
+            name: agent-hooks
+        podSpec:
+          containers:
+            - command:
+                - echo
+                - "helloww"
+              image: alpine/k8s:1.27.5
+              env:
+                - name: BUILDKITE_HOOKS_PATH
+                  value: /buildkite/hooks
+          volumes:
+            - configMap:
+                defaultMode: 493
+                name: buildkite-agent-hooks
+              name: agent-hooks

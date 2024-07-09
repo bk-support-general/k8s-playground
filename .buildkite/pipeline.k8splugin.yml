@@ -1,0 +1,13 @@
+ steps:
+  - label: ":k8s: 👀 other repos" 
+    command: 
+      - cat README.md
+    plugins:
+      - git-ssh-checkout#v0.3.2:
+          repository-url: "git@github.com:bk-support-general/lizette-tests.git"
+          ssh-secret-key-name: "liz_something_secret"     
+      - kubernetes: 
+          podSpec:
+            containers:
+            - image: bash:latest
+
