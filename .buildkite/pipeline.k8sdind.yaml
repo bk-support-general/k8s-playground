@@ -1,12 +1,12 @@
 # Most Buildkite plugins uses docker container to perform the plugin task
 # This is an example pipeline that uses a plugin that runs a docker container
 
-# Reference: 
+# References: 
 # https://github.com/buildkite/containers-on-k8s 
 # https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
 
 steps:
-  - label: ":pipeline:"
+  - label: ":k8s::docker: docker version test"
     plugins: 
     - kubernetes:
         checkout:
