@@ -1,0 +1,35 @@
+# Most Buildkite plugins uses docker container to perform the plugin task
+# This is an example pipeline that uses a plugin that runs a docker container
+
+# Reference: 
+# https://github.com/buildkite/containers-on-k8s 
+# https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
+
+steps:
+  - label: ":pipeline:"
+    plugins: 
+    - kubernetes:
+        checkout:
+          skip: true
+        sidecars:
+            - image: docker:dind
+              env:
+              - name: DOCKER_TLS_CERTDIR
+                value: ""
+              volumeMounts:
+              - name: "docker-sock"
+                mountPath: "/var/run/"
+              securityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+        mirrorVolumeMounts: true 
+        podSpec:
+            containers:
+              - image: docker:latest
+                volumeMounts:
+                  - mountPath: /var/run/
+                    name: docker-sock  
+                command: ["docker", "version"]
+            volumes:
+            - name: docker-sock
+              emptyDir: {}
