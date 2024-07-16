@@ -1,0 +1,10 @@
+steps:
+  - label: ":k8s:"
+    command: echo "hello there" 
+    plugins:
+      - kubernetes:
+          checkout:
+            skip: true       
+          podSpec:
+            containers:
+            - image: bash:latest    
