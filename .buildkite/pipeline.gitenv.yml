@@ -1,0 +1,10 @@
+steps:
+  - label: ":wave: hello from k8s-eks"
+    command: buildkite-agent pipeline upload
+    plugins:
+      - kubernetes:
+          gitEnvFrom:
+            - secretRef: { name: your-repo-ssh-keys-here }
+          podSpec:
+            containers:
+            - image: buildkite/agent:latest
