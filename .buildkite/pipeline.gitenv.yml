@@ -1,5 +1,5 @@
 steps:
-  - label: ":wave: hello from k8s-eks"
+  - label: ":wave: k8s-eks"
     command: buildkite-agent pipeline upload
     plugins:
       - kubernetes:
