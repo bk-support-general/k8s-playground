@@ -1,6 +1,6 @@
 steps:
   - label: ":pipeline:" 
-    command: buildkite-agent pipeline upload .buildkite/pipeline.skipcheckout.yml
+    command: whoami
     plugins:
       - kubernetes: 
           podSpec:
