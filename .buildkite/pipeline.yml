@@ -3,11 +3,11 @@ steps:
     command: whoami
     plugins:
       - kubernetes: 
-          podSpec:
-            containers:
-            - image: buildkite/agent:latest
-              securityContext:
-                runAsUser: 30000
-                privileged: false
-                runAsGroup: 30000
-                allowPrivilegeEscalation: false
+          containers:
+              - name: "container-0"
+                image: buildkite/agent:latest 
+                securityContext:
+                  runAsUser: 30000
+                  privileged: false
+                  runAsGroup: 30000
+                  allowPrivilegeEscalation: false
