@@ -1,6 +1,6 @@
 steps:
   - label: ":pipeline:" 
-    command: whoami
+    command: whoami && id -g -n
     plugins:
       - kubernetes: 
           podSpecPatch: 
