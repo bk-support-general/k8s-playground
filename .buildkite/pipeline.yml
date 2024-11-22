@@ -11,3 +11,6 @@ steps:
                   privileged: false
                   runAsGroup: 30000
                   allowPrivilegeEscalation: false
+                volumeMounts:
+                - name: logging-volume
+                  mountPath: /opt/var/logs/docker
