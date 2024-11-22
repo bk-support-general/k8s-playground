@@ -3,14 +3,11 @@ steps:
     command: whoami
     plugins:
       - kubernetes: 
-          containers:
-              - name: "container-0"
-                image: buildkite/agent:latest 
-                securityContext:
-                  runAsUser: 30000
-                  privileged: false
-                  runAsGroup: 30000
-                  allowPrivilegeEscalation: false
-                volumeMounts:
-                - name: logging-volume
-                  mountPath: /opt/var/logs/docker
+          podSpecPatch: 
+            spec:
+              securityContext:
+                runAsUser: 30000
+                runAsGroup: 30000
+                fsGroup: 30000
+                runAsNonRoot: true
+                allowPrivilegeEscalation: false 
