@@ -13,8 +13,8 @@ steps:
               volumeMounts:
               - name: "dshm"
                 mountPath: "/dev/shm"
-              securityContext:
-                runAsUser: 30000
-                privileged: false
-                runAsGroup: 30000
-                allowPrivilegeEscalation: false
+              # securityContext:
+              #   runAsUser: 30000
+              #   privileged: false
+              #   runAsGroup: 30000
+              #   allowPrivilegeEscalation: false
