@@ -4,10 +4,11 @@ steps:
     plugins:
       - kubernetes: 
           podSpecPatch: 
-            spec:
-              securityContext:
-                runAsUser: 30000
-                runAsGroup: 30000
-                fsGroup: 30000
-                runAsNonRoot: true
-                allowPrivilegeEscalation: false 
+          - name: container-0
+            image: alpine:latest
+            securityContext:
+              runAsUser: 30000
+              runAsGroup: 30000
+              fsGroup: 30000
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false 
