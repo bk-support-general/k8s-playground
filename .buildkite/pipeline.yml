@@ -3,6 +3,8 @@ steps:
     command: whoami 
     plugins:
       - kubernetes: 
+          checkout:
+            skip: true
           podSpecPatch:  
               containers:
               - name: "container-0"
