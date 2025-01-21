@@ -1,28 +1,9 @@
 steps:
   - label: ":pipeline:" 
-    command: whoami && id -g -n
+    command: whoami 
     plugins:
       - kubernetes: 
           podSpecPatch:  
-              volumes:
-              - name: "dshm"
-                emptyDir:
-                  medium: "Memory"
-                  sizeLimit: "85.0Gi"
               containers:
               - name: "container-0"
-                image: "ghcr.io/siemens/kas/kas:3.3"
-                resources:
-                  limits:
-                    memory: "100Gi"
-                  requests:
-                    cpu: "58"
-                    memory: "100Gi"
-                volumeMounts:
-                - name: "dshm"
-                  mountPath: "/dev/shm"
-                securityContext:
-                  runAsUser: 30000
-                  privileged: false
-                  runAsGroup: 30000
-                  allowPrivilegeEscalation: false
+                image: "alpine:latest" 
