@@ -1,6 +1,13 @@
 steps:
   - label: ":k8s:"
-    command: echo "hello there" 
+    command: |-
+      while true; do 
+          # Your commands here 
+          echo "Running..." 
+          # Optional: Sleep for a specific duration to prevent high CPU usage 
+          sleep 10 
+      done 
+
     plugins:
       - kubernetes:
           checkout:
