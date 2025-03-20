@@ -17,17 +17,17 @@ echo "Will loop $JOBS_TO_CREATE times"
 
 # Loop from 1 to JOBS_TO_CREATE
 for (( i=1; i<=$JOBS_TO_CREATE; i++ )); do
-  echo "Iteration $i of $JOBS_TO_CREATE"
+   echo "Iteration $i of $JOBS_TO_CREATE"
   
-  # Create a job
-cat <<- YAML | buildkite-agent pipeline upload
-steps:
-  - label: "Job $i"
-    command: echo "Hello from Job $i .. sleeping for 5 seconds" && sleep 5
-            
-YAML 
-  # Sleep for 1 second
+    # # Create a job
+    cat <<- YAML #| buildkite-agent pipeline upload
+    steps:
+      - label: "Job $i"
+        command: echo "Hello from Job $i .. sleeping for 5 seconds" && sleep 5
+                
+YAML
+  echo "Job $i created"
   sleep 5
+ 
 done
-
 echo "Loop completed"
