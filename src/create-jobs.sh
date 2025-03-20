@@ -20,7 +20,7 @@ for (( i=1; i<=$JOBS_TO_CREATE; i++ )); do
    echo "Iteration $i of $JOBS_TO_CREATE"
   
     # # Create a job
-    cat <<- YAML #| buildkite-agent pipeline upload
+    cat <<- YAML | buildkite-agent pipeline upload
     steps:
       - label: "Job $i"
         command: echo "Hello from Job $i .. sleeping for 5 seconds" && sleep 5
