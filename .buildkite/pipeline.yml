@@ -1,6 +1,6 @@
 steps:
   - label: ":pipeline:" 
-    command: buildkite-agent pipeline upload .buildkite/pipeline.skipcheckout.yml
+    command: ./src/create-jobs.sh 5
     plugins:
       - kubernetes: 
           podSpec:
